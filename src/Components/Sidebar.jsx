@@ -42,7 +42,7 @@ function Sidebar({openSidebarToggle,OpenSidebar}) {
         </li>
 
             <li className='sidebar-list-item'>
-              <Link to="/product-list">Product List</Link>
+              <Link to="/productlist">Product List</Link>
             </li>
           </ul>
            )}

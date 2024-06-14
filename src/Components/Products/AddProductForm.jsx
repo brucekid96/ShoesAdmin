@@ -1,24 +1,24 @@
-// AddProductForm.js
-
-import React, { useState } from 'react';
+import React, { useContext,useState } from 'react';
+import { ProductContext } from '../../contexts/ProductContext';
 import './AddProductForm.css'
-import image_holder from '../Assets/image.png'
-import { BsUpload } from 'react-icons/bs'; // Import the upload icon
+import ProductManagement from './ProductManagement';
+
 
 
 const AddProductForm = () => {
+
+  const { addProduct } = useContext(ProductContext);
   const [product, setProduct] = useState({
     name: '',
+    gender: '',
+    category:'',
     description: '',
-    price: '',
-    gender: '', // New attribute: Gender
-    size: '', // New attribute: Size
-    model: '', // New attribute: Model
-    newPrice: '', // New attribute: New Price
-    oldPrice: '', // New attribute: Old Price
-    image: null, // Store the selected image file
+    size: '', 
+    model: '', 
+    newPrice: '',
+    oldPrice: '', 
+    image: null, 
   });
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -31,19 +31,23 @@ const AddProductForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     // Handle form submission (e.g., send data to the server)
-    console.log('Product submitted:', product);
-    // Reset form fields
+    console.log('Submitting Product:', product);
+    addProduct(product);
+    
+    
+   
     setProduct({
       name: '',
-      description: '',
-      price: '',
       gender: '',
-      size: '',
-      model: '',
-      newPrice: '',
-      oldPrice: '',
-      image: null,
+      category:'',
+      description: '',
+      size: '', 
+      model: '', 
+      newPrice: '', 
+      oldPrice: '', 
+      image: null, 
     });
   };
 
@@ -51,7 +55,7 @@ const AddProductForm = () => {
     <div className="add-product-form">
       <h2>Add New Product</h2>
       <form onSubmit={handleSubmit}>
-        {/* Existing fields */}
+        
       <div className="form-fields">
         <input
         className='product-name'
@@ -128,7 +132,7 @@ const AddProductForm = () => {
         />
         </div>
       </div>
-        {/* Image upload */}
+       
         
         <div className="image-upload-container">
           <div className="image-title"><h2>Upload Image</h2></div>
@@ -149,7 +153,7 @@ const AddProductForm = () => {
            </div>
            </div>
         
-        <button type="submit">Add Product</button>
+        <button type="button" onClick={handleSubmit}>Add Product</button>
       </form>
     </div>
   );
