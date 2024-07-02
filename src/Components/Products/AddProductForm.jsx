@@ -10,6 +10,7 @@ const AddProductForm = () => {
   const { addProduct } = useContext(ProductContext);
   const [product, setProduct] = useState({
     name: '',
+    quantity:'',
     gender: '',
     category:'',
     description: '',
@@ -40,6 +41,7 @@ const AddProductForm = () => {
    
     setProduct({
       name: '',
+      quantity:'',
       gender: '',
       category:'',
       description: '',
@@ -63,6 +65,14 @@ const AddProductForm = () => {
           name="name"
           placeholder="Product Name"
           value={product.name}
+          onChange={handleInputChange}
+        />
+        <input
+        className='product-quantity'
+          type="text"
+          name="quantity"
+          placeholder="Quantity"
+          value={product.quantity}
           onChange={handleInputChange}
         />
         <div className="small-inputs">

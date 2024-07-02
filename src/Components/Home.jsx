@@ -29,12 +29,12 @@ function Home() {
    } ,
    {
     name: 'Quantity',
-    selector: row => numberOfUniqueShoes,
+    selector: row => row.quantity,
     sortable:true
    } ,
    {
     name: 'Amount',
-    selector: row => row.newPrice* numberOfUniqueShoes,
+    selector: row => row.newPrice* row.quantity,
     sortable:true
    } ,
   ];
@@ -103,6 +103,7 @@ function Home() {
   data={records}
   fixedHeader
   pagination
+  keyField="id"
   ></DataTable>
 </div>
 

@@ -36,14 +36,23 @@ const ProductListForm = () => {
     } ,
     {
      name: 'Quantity',
-     selector: row => numberOfUniqueShoes,
+     selector: row => row.quantity,
      sortable:true
     } ,
     {
      name: 'Amount',
-     selector: row => row.newPrice* numberOfUniqueShoes,
+     selector: row => row.newPrice* row.quantity ,
      sortable:true
     } ,
+    {
+      name: 'Actions',
+      cell: (row) => (
+        <div>
+          <button onClick={() => handleEdit(row)}>Edit</button>
+          <button onClick={() => handleDelete(row)}>Delete</button>
+        </div>
+      ),
+    },
    ];
    const data = products;
    const [records, setRecords] = useState(data);
@@ -53,6 +62,17 @@ const ProductListForm = () => {
     })
     setRecords(newData)
   }
+
+  const handleEdit = (row) => {
+    // Implement your edit logic here
+    console.log('Edit product:', row);
+  };
+
+  // Handle delete action (you can implement your own delete logic)
+  const handleDelete = (row) => {
+    // Implement your delete logic here
+    console.log('Delete product:', row);
+  };
     // Create a Set to store unique shoe names
     const uniqueShoeNames = new Set();
 
@@ -85,27 +105,7 @@ const ProductListForm = () => {
   fixedHeader
   pagination
   ></DataTable>
-{/*       
-          <div>
-          {products.map((product) => (
-         <div key={product.id} className="cartitems-format cartitems-format-main">
-              {product.image && (
-              <img
-                src={URL.createObjectURL(product.image)} 
-                alt={product.name}
-                className='carticon-product-icon'
-              />
-            )}
-             <p>{product.name}</p>
-              <p>{product.size}</p>
-             <button className="cartitems-quantity">{numberOfUniqueShoes}</button>
-             <p>${product.newPrice}</p>
-             <img src={action_icon}  alt="" className='cartitems-action-icon'/>
-         </div>
-          ))}
-         <hr />
-         
-       </div> */}
+
        
         
 

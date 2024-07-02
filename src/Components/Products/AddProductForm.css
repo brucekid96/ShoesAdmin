@@ -35,6 +35,16 @@
   color: #333;
 }
 
+.product-quantity{
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
 .gender{
   width: 20%;
   padding: 10px;
